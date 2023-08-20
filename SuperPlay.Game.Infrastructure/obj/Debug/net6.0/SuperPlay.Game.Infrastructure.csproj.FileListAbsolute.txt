@@ -9,3 +9,7 @@ D:\z\superplay-gameserver\SuperPlay.Game.Infrastructure\obj\Debug\net6.0\SuperPl
 D:\z\superplay-gameserver\SuperPlay.Game.Infrastructure\obj\Debug\net6.0\refint\SuperPlay.Game.Infrastructure.dll
 D:\z\superplay-gameserver\SuperPlay.Game.Infrastructure\obj\Debug\net6.0\SuperPlay.Game.Infrastructure.pdb
 D:\z\superplay-gameserver\SuperPlay.Game.Infrastructure\obj\Debug\net6.0\ref\SuperPlay.Game.Infrastructure.dll
+D:\z\superplay-gameserver\SuperPlay.Game.Infrastructure\bin\Debug\net6.0\SuperPlay.Game.Domain.dll
+D:\z\superplay-gameserver\SuperPlay.Game.Infrastructure\bin\Debug\net6.0\SuperPlay.Game.Domain.pdb
+D:\z\superplay-gameserver\SuperPlay.Game.Infrastructure\obj\Debug\net6.0\SuperPlay.Game.Infrastructure.csproj.AssemblyReference.cache
+D:\z\superplay-gameserver\SuperPlay.Game.Infrastructure\obj\Debug\net6.0\SuperPlay.Game.Infrastructure.csproj.CopyComplete

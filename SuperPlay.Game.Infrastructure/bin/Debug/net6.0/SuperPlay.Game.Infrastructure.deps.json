@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v6.0": {
       "SuperPlay.Game.Infrastructure/1.0.0": {
+        "dependencies": {
+          "SuperPlay.Game.Domain": "1.0.0"
+        },
         "runtime": {
           "SuperPlay.Game.Infrastructure.dll": {}
+        }
+      },
+      "SuperPlay.Game.Domain/1.0.0": {
+        "runtime": {
+          "SuperPlay.Game.Domain.dll": {}
         }
       }
     }
   },
   "libraries": {
     "SuperPlay.Game.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SuperPlay.Game.Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

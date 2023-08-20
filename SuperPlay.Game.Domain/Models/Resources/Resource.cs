@@ -15,5 +15,15 @@
         {
             return new Resource(type, count);
         }
+
+        public void AddCount(int count)
+        {
+            Count += count;
+        }
+
+        public void SetCount(int count)
+        {
+            Count = count;
+        }
     }
 }

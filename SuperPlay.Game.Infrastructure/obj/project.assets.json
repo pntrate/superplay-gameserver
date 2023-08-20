@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "SuperPlay.Game.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/SuperPlay.Game.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SuperPlay.Game.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "SuperPlay.Game.Domain/1.0.0": {
+      "type": "project",
+      "path": "../SuperPlay.Game.Domain/SuperPlay.Game.Domain.csproj",
+      "msbuildProject": "../SuperPlay.Game.Domain/SuperPlay.Game.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "SuperPlay.Game.Domain >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\nikak\\.nuget\\packages\\": {}
@@ -33,7 +52,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\z\\superplay-gameserver\\SuperPlay.Game.Domain\\SuperPlay.Game.Domain.csproj": {
+              "projectPath": "D:\\z\\superplay-gameserver\\SuperPlay.Game.Domain\\SuperPlay.Game.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
