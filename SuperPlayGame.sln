@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperPlay.Game.Api", "Super
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperPlay.Game.Client", "SuperPlay.Game.Client\SuperPlay.Game.Client.csproj", "{D3B345AD-4BE3-4673-81C1-2859433D04F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperPlay.Game.Application", "SuperPlay.Game.Application\SuperPlay.Game.Application.csproj", "{FBF4721B-9EA7-4DA4-A3E5-B85908CC7C6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{D3B345AD-4BE3-4673-81C1-2859433D04F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3B345AD-4BE3-4673-81C1-2859433D04F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3B345AD-4BE3-4673-81C1-2859433D04F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBF4721B-9EA7-4DA4-A3E5-B85908CC7C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBF4721B-9EA7-4DA4-A3E5-B85908CC7C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBF4721B-9EA7-4DA4-A3E5-B85908CC7C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBF4721B-9EA7-4DA4-A3E5-B85908CC7C6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{FE79ACC3-D3CC-4098-A328-032D9103BB3F} = {944E5047-970B-4D60-8C89-D4D3D8CF222F}
 		{87AFABCF-C3AE-4CB9-9DFA-68E72DCCB8BA} = {944E5047-970B-4D60-8C89-D4D3D8CF222F}
 		{D3B345AD-4BE3-4673-81C1-2859433D04F5} = {F3CE7EB1-2024-4692-A4D4-415B080B7EB1}
+		{FBF4721B-9EA7-4DA4-A3E5-B85908CC7C6F} = {944E5047-970B-4D60-8C89-D4D3D8CF222F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {25FE4748-DCBD-4C1B-9387-D2BC7A82A289}

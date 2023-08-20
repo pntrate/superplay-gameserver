@@ -88,6 +88,43 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "SuperPlay.Game.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "SuperPlay.Game.Domain": "1.0.0",
+          "SuperPlay.Game.Infrastructure": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SuperPlay.Game.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SuperPlay.Game.Application.dll": {}
+        }
+      },
+      "SuperPlay.Game.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/SuperPlay.Game.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SuperPlay.Game.Domain.dll": {}
+        }
+      },
+      "SuperPlay.Game.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "SuperPlay.Game.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SuperPlay.Game.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SuperPlay.Game.Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -429,10 +466,26 @@
         "swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "SuperPlay.Game.Application/1.0.0": {
+      "type": "project",
+      "path": "../SuperPlay.Game.Application/SuperPlay.Game.Application.csproj",
+      "msbuildProject": "../SuperPlay.Game.Application/SuperPlay.Game.Application.csproj"
+    },
+    "SuperPlay.Game.Domain/1.0.0": {
+      "type": "project",
+      "path": "../SuperPlay.Game.Domain/SuperPlay.Game.Domain.csproj",
+      "msbuildProject": "../SuperPlay.Game.Domain/SuperPlay.Game.Domain.csproj"
+    },
+    "SuperPlay.Game.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../SuperPlay.Game.Infrastructure/SuperPlay.Game.Infrastructure.csproj",
+      "msbuildProject": "../SuperPlay.Game.Infrastructure/SuperPlay.Game.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "SuperPlay.Game.Application >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
@@ -462,7 +515,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\z\\superplay-gameserver\\SuperPlay.Game.Application\\SuperPlay.Game.Application.csproj": {
+              "projectPath": "D:\\z\\superplay-gameserver\\SuperPlay.Game.Application\\SuperPlay.Game.Application.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
