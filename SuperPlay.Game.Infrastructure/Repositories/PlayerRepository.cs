@@ -12,9 +12,14 @@ namespace SuperPlay.Game.Infrastructure.Repositories
             _players = new List<Player>();
         }
 
-        public Player? Get(Guid id)
+        public Player? GetById(Guid id)
         {
             return _players.FirstOrDefault(p => p.Id == id);
+        }
+
+        public Player? GetByDeviceId(Guid deviceId)
+        {
+            return _players.FirstOrDefault(p => p.DeviceId == deviceId);
         }
 
         public void Create(Player player)

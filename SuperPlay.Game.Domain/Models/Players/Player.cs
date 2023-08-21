@@ -6,40 +6,43 @@ namespace SuperPlay.Game.Domain.Models.Players
 {
     public class Player : AggregateRoot<Guid>
     {
-        public string Name { get; private set; }
         public bool IsOnline { get; private set; }
         public DateTime? LastLoginDate { get; private set; }
         public Guid DeviceId { get; private set; }
 
         public List<Resource> Resources { get; private set; }
 
-        private Player(Guid deviceId, string name)
+        private Player(Guid deviceId)
         {
             Id = Guid.NewGuid();
             DeviceId = deviceId;
-            Name = name;
             Resources = new();
         }
 
-        public static Player Create(Guid deviceId, string name)
+        public static Player Create(Guid deviceId)
         {
-            return new Player(deviceId, name);
+            return new Player(deviceId);
         }
 
         public void Login()
         {
+            if (IsOnline)
+            {
+                throw new DomainException($"Player {Id} with DeviceId {DeviceId} is already logged in");
+            }
+
             IsOnline = true;
             LastLoginDate = DateTimeProvider.Now;
         }
 
-        public void SendGift(ResourceType resourceType, int count)
+        public void SendGift(ResourceType resourceType, int value)
         {
             if (Enum.IsDefined(typeof(ResourceType), resourceType) || resourceType == ResourceType.None)
             {
                 throw new DomainException("");
             }
 
-            if (count < 0)
+            if (value < 0)
             {
                 throw new DomainException("");
             }
@@ -47,12 +50,12 @@ namespace SuperPlay.Game.Domain.Models.Players
             var resource = Resources.FirstOrDefault(i => i.Type == resourceType);
             if (resource is Resource)
             {
-                var newCount = resource.Count - count;
-                if (newCount < 0)
+                var newBalance = resource.Balance - value;
+                if (newBalance < 0)
                 {
                     throw new DomainException("");
                 }
-                resource.SetCount(newCount);
+                resource.SetBalance(newBalance);
             }
             else
             {
@@ -60,14 +63,14 @@ namespace SuperPlay.Game.Domain.Models.Players
             }
         }
 
-        public void ReceiveGift(ResourceType resourceType, int count)
+        public int UpdateResources(ResourceType resourceType, int value)
         {
             if (Enum.IsDefined(typeof(ResourceType), resourceType) || resourceType == ResourceType.None)
             {
                 throw new DomainException("");
             }
 
-            if (count < 0)
+            if (value < 0)
             {
                 throw new DomainException("");
             }
@@ -75,13 +78,14 @@ namespace SuperPlay.Game.Domain.Models.Players
             var resource = Resources.FirstOrDefault(i => i.Type == resourceType);
             if (resource is Resource)
             {
-                resource.AddCount(count);
+                resource.AddBalance(value);
             }
             else
             {
-                resource = Resource.Create(resourceType, count);
+                resource = Resource.Create(resourceType, value);
                 Resources.Add(resource);
             }
+            return resource.Balance;
         }
     }
 }

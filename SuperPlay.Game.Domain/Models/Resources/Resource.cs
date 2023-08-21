@@ -3,27 +3,27 @@
     public class Resource : ValueObject
     {
         public ResourceType Type { get; private set; }
-        public int Count { get; private set; }
+        public int Balance { get; private set; }
 
-        private Resource(ResourceType type, int count)
+        private Resource(ResourceType type, int balance)
         {
             Type = type;
-            Count = count;
+            Balance = balance;
         }
 
-        public static Resource Create(ResourceType type, int count)
+        public static Resource Create(ResourceType type, int balance)
         {
-            return new Resource(type, count);
+            return new Resource(type, balance);
         }
 
-        public void AddCount(int count)
+        public void AddBalance(int value)
         {
-            Count += count;
+            Balance += value;
         }
 
-        public void SetCount(int count)
+        public void SetBalance(int value)
         {
-            Count = count;
+            Balance = value;
         }
     }
 }
