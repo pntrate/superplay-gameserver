@@ -80,16 +80,13 @@ namespace SuperPlay.Game.Api.Extensions
             var handlerFound = _handlers.TryGetValue(message.Type, out var handlerMetadata);
             if (!handlerFound)
             {
-                logger.LogError($"Operation handler not found for message of type ${message.Type}");
-                return null;
+                return PopulateError(logger, $"Operation handler not found for message of type ${message.Type}");
             }
 
             var handlerType = handlerMetadata!.HandlerType;
-            var handler = serviceProvider.GetService(handlerType) as IMessageHandler;
-            if (handler is null)
+            if (serviceProvider.GetService(handlerType) is not IMessageHandler handler)
             {
-                logger.LogError($"Operation handler not found for message of type ${message.Type}");
-                return null;
+                return PopulateError(logger, $"Operation handler not found for message of type ${message.Type}");
             }
 
             try
@@ -97,17 +94,27 @@ namespace SuperPlay.Game.Api.Extensions
                 var request = JsonSerializer.Deserialize(message.Content, handlerMetadata.RequestType);
                 if (request is null)
                 {
-                    logger.LogError($"Error while deserializing message of type ${message.Type}");
-                    return null;
+                    return PopulateError(logger, $"Error while deserializing message of type ${message.Type}");
                 }
                 return await handler.Handle(request, operationContext);
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Error while performing operation");
-                return null;
+                return PopulateError(logger, "Error while performing operation", ex);
             }
+        }
 
+        private static ErrorMessage PopulateError(ILogger logger, string message, Exception? ex = null)
+        {
+            if (ex is null)
+            {
+                logger.LogError(message);
+            }
+            else
+            {
+                logger.LogError(ex, message);
+            }
+            return new ErrorMessage(message);
         }
 
     }
