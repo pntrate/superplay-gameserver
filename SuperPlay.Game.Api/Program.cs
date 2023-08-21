@@ -6,6 +6,8 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
 
+    Log.Logger = SerilogBootstrapper.GetLoggerConfiguration().CreateLogger();
+
     builder.SetupSerilog();
 
     Log.Information("Starting app setup...");
