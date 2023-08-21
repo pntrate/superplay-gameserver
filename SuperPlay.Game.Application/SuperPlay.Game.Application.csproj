@@ -11,8 +11,4 @@
     <ProjectReference Include="..\SuperPlay.Game.Infrastructure\SuperPlay.Game.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Handlers\" />
-  </ItemGroup>
-
 </Project>

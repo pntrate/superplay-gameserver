@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.DependencyInjection;
+using SuperPlay.Game.Application.Modules.Player.Abstraction;
+using SuperPlay.Game.Application.Modules.Player.Hub;
 
 namespace SuperPlay.Game.Application
 {
-    public class Bootstrapper
+    public static class Bootstrapper
     {
-
+        public static void AddApplicationLayer(this IServiceCollection services)
+        {
+            services.AddSingleton<IPlayerPool, PlayerPool>();
+        }
     }
 }

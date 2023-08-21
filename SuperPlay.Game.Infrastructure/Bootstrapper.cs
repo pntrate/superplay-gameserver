@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.DependencyInjection;
+using SuperPlay.Game.Infrastructure.Abstraction;
+using SuperPlay.Game.Infrastructure.Repositories;
 
 namespace SuperPlay.Game.Infrastructure
 {
-    public class Bootstrapper
+    public static class Bootstrapper
     {
-
+        public static void AddInfrastructure(this IServiceCollection services)
+        {
+            services.AddSingleton<IPlayerRepository, PlayerRepository>();
+        }
     }
 }

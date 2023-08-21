@@ -1,17 +1,32 @@
 using Serilog;
+using SuperPlay.Game.Api;
+using SuperPlay.Game.Api.Extensions;
 
-var builder = WebApplication.CreateBuilder(args);
+try
+{
+    var builder = WebApplication.CreateBuilder(args);
 
-var logger = new LoggerConfiguration()
-                    .ReadFrom.Configuration(builder.Configuration)
-                    .Enrich.FromLogContext()
-                    .CreateLogger();
+    builder.SetupSerilog();
 
-builder.Logging.ClearProviders();
-builder.Logging.AddSerilog(logger);
+    Log.Information("Starting app setup...");
 
-var app = builder.Build();
+    var startup = new Startup();
+    startup.ConfigureServices(builder.Services);
 
-app.MapGet("/", () => "");
+    var app = builder.Build();
 
-app.Run();
+    app.MapGet("/", () => "Superplay game server is running...");
+    Log.Information("Superplay game server is running...");
+
+    app.Run();
+
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Unhandled exception");
+}
+finally
+{
+    Log.Information("Shut down complete");
+    Log.CloseAndFlush();
+}
