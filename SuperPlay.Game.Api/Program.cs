@@ -19,7 +19,6 @@ try
     Log.Information("Superplay game server is running...");
 
     app.Run();
-
 }
 catch (Exception ex)
 {
