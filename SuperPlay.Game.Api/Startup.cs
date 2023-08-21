@@ -1,4 +1,5 @@
-﻿using SuperPlay.Game.Application;
+﻿using SuperPlay.Game.Api.Extensions;
+using SuperPlay.Game.Application;
 using SuperPlay.Game.Infrastructure;
 
 namespace SuperPlay.Game.Api
@@ -9,6 +10,7 @@ namespace SuperPlay.Game.Api
         {
             services.AddApplicationLayer();
             services.AddInfrastructure();
+            services.RegisterMessageHandlers();
         }
     }
 }

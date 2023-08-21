@@ -5,14 +5,14 @@ using SuperPlay.Game.Infrastructure.Abstraction;
 
 namespace SuperPlay.Game.Application.Modules.Player.Handlers.SendGift
 {
-    public class SendGiftHandler : HandlerBase<SendGiftRequest, SendGiftResponse>
+    public class SendGiftHandler : MessageHandlerBase<SendGiftRequest, SendGiftResponse>
     {
         public SendGiftHandler(IPlayerRepository playerRepository, IPlayerPool playerPool) : base(playerRepository, playerPool)
         {
 
         }
 
-        public override async Task<SendGiftResponse> Handle(SendGiftRequest request, PlayerContext context)
+        public override async Task<SendGiftResponse> Handle(SendGiftRequest request, OperationContext context)
         {
             var sender = _playerRepository.GetById(context.PlayerId) ?? throw new Exception("");
             var friend = _playerRepository.GetById(request.FriendPlayerId) ?? throw new Exception("");

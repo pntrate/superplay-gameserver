@@ -18,6 +18,8 @@ try
     app.MapGet("/", () => "Superplay game server is running...");
     Log.Information("Superplay game server is running...");
 
+    app.KickOffGameServer();
+
     app.Run();
 }
 catch (Exception ex)

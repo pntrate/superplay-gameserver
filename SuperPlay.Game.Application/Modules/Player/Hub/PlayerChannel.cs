@@ -1,5 +1,6 @@
 ﻿using SuperPlay.Game.Application.Modules.Player.Models.Common;
 using System.Net.WebSockets;
+using System.Reflection;
 using System.Text;
 using System.Text.Json;
 
@@ -17,11 +18,12 @@ namespace SuperPlay.Game.Application.Modules.Player.Hub
             _webSocket = webSocket;
         }
 
-        public async Task SendMessage<T>(T message)
+        public async Task SendMessage<T>(T payload)
         {
             var sendBuffer = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(new Message
             {
-                Content = JsonSerializer.Serialize(message)
+                Content = JsonSerializer.Serialize(payload),
+                Type = payload!.GetType()!.GetCustomAttribute<MessageTypeAttribute>()!.Name
             }));
 
             await _webSocket.SendAsync(new ArraySegment<byte>(sendBuffer), WebSocketMessageType.Text, true, CancellationToken.None);

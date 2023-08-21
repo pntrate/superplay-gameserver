@@ -2,7 +2,7 @@
 
 namespace SuperPlay.Game.Application.Modules.Player.Models.Common
 {
-    public class PlayerContext
+    public class OperationContext
     {
         public Guid PlayerId { get; set; }
         public PlayerChannel? PlayerChannel { get; set; }

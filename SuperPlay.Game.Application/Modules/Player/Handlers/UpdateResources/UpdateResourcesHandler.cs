@@ -5,14 +5,14 @@ using SuperPlay.Game.Infrastructure.Abstraction;
 
 namespace SuperPlay.Game.Application.Modules.Player.Handlers.UpdateResources
 {
-    public class UpdateResourcesHandler : HandlerBase<UpdateResourcesRequest, UpdateResourcesResponse>
+    public class UpdateResourcesHandler : MessageHandlerBase<UpdateResourcesRequest, UpdateResourcesResponse>
     {
         public UpdateResourcesHandler(IPlayerRepository playerRepository, IPlayerPool playerPool) : base(playerRepository, playerPool)
         {
             
         }
 
-        public override Task<UpdateResourcesResponse> Handle(UpdateResourcesRequest request, PlayerContext context)
+        public override Task<UpdateResourcesResponse> Handle(UpdateResourcesRequest request, OperationContext context)
         {
             var player = _playerRepository.GetById(context.PlayerId)
                         ?? throw new Exception("");

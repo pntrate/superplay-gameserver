@@ -5,14 +5,14 @@ using SuperPlay.Game.Infrastructure.Abstraction;
 
 namespace SuperPlay.Game.Application.Modules.Player.Handlers.Login
 {
-    public class LoginHandler : HandlerBase<LoginRequest, LoginResponse>
+    public class LoginHandler : MessageHandlerBase<LoginRequest, LoginResponse>
     {
         public LoginHandler(IPlayerRepository playerRepository, IPlayerPool playerPool) : base(playerRepository, playerPool)
         {
 
         }
 
-        public override Task<LoginResponse> Handle(LoginRequest request, PlayerContext context)
+        public override Task<LoginResponse> Handle(LoginRequest request, OperationContext context)
         {
             var player = _playerRepository.GetByDeviceId(request.DeviceId);
             if (player == null)
