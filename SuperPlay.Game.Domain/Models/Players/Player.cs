@@ -35,14 +35,14 @@ namespace SuperPlay.Game.Domain.Models.Players
             LastLoginDate = DateTimeProvider.Now;
         }
 
-        public void SendGift(ResourceType resourceType, int value)
+        public void SendGift(ResourceType resourceType, int resourceValue)
         {
             if (Enum.IsDefined(typeof(ResourceType), resourceType) || resourceType == ResourceType.None)
             {
                 throw new DomainException("");
             }
 
-            if (value < 0)
+            if (resourceValue < 0)
             {
                 throw new DomainException("");
             }
@@ -50,7 +50,7 @@ namespace SuperPlay.Game.Domain.Models.Players
             var resource = Resources.FirstOrDefault(i => i.Type == resourceType);
             if (resource is Resource)
             {
-                var newBalance = resource.Balance - value;
+                var newBalance = resource.Balance - resourceValue;
                 if (newBalance < 0)
                 {
                     throw new DomainException("");
@@ -63,14 +63,14 @@ namespace SuperPlay.Game.Domain.Models.Players
             }
         }
 
-        public int UpdateResources(ResourceType resourceType, int value)
+        public Resource UpdateResources(ResourceType resourceType, int resourceValue)
         {
             if (Enum.IsDefined(typeof(ResourceType), resourceType) || resourceType == ResourceType.None)
             {
                 throw new DomainException("");
             }
 
-            if (value < 0)
+            if (resourceValue < 0)
             {
                 throw new DomainException("");
             }
@@ -78,14 +78,14 @@ namespace SuperPlay.Game.Domain.Models.Players
             var resource = Resources.FirstOrDefault(i => i.Type == resourceType);
             if (resource is Resource)
             {
-                resource.AddBalance(value);
+                resource.AddBalance(resourceValue);
             }
             else
             {
-                resource = Resource.Create(resourceType, value);
+                resource = Resource.Create(resourceType, resourceValue);
                 Resources.Add(resource);
             }
-            return resource.Balance;
+            return resource;
         }
     }
 }

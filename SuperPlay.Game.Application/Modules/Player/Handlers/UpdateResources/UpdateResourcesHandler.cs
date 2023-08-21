@@ -17,11 +17,11 @@ namespace SuperPlay.Game.Application.Modules.Player.Handlers.UpdateResources
             var player = _playerRepository.GetById(context.PlayerId)
                         ?? throw new Exception("");
 
-            var balance = player.UpdateResources(request.ResourceType, request.ResourceValue);
+            var resource = player.UpdateResources(request.ResourceType, request.ResourceValue);
 
             return Task.FromResult(new UpdateResourcesResponse
             {
-                NewBalance = balance
+                NewBalance = resource.Balance
             });
 
         }
