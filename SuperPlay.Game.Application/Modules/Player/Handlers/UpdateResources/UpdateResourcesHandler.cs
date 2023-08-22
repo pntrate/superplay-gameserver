@@ -1,6 +1,7 @@
 ﻿using SuperPlay.Game.Application.Modules.Player.Abstraction;
 using SuperPlay.Game.Application.Modules.Player.Models.Common;
 using SuperPlay.Game.Application.Modules.Player.Models.UpdateResources;
+using SuperPlay.Game.Domain.Common.Exceptions;
 using SuperPlay.Game.Infrastructure.Abstraction;
 
 namespace SuperPlay.Game.Application.Modules.Player.Handlers.UpdateResources
@@ -15,7 +16,7 @@ namespace SuperPlay.Game.Application.Modules.Player.Handlers.UpdateResources
         public override Task<UpdateResourcesResponse> Handle(UpdateResourcesRequest request, OperationContext context)
         {
             var player = _playerRepository.GetById(context.PlayerId)
-                        ?? throw new Exception("");
+                        ?? throw new EntityNotFoundException("Player not found");
 
             var resource = player.UpdateResources(request.ResourceType, request.ResourceValue);
 

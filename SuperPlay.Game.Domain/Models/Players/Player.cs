@@ -12,6 +12,14 @@ namespace SuperPlay.Game.Domain.Models.Players
 
         public List<Resource> Resources { get; private set; }
 
+        //Public Constructor just for testing purposes (to seed few players)
+        public Player(Guid id, Guid deviceId)
+        {
+            Id = id;
+            DeviceId = deviceId;
+            Resources = new List<Resource>();
+        }
+
         private Player(Guid deviceId)
         {
             Id = Guid.NewGuid();
@@ -37,14 +45,14 @@ namespace SuperPlay.Game.Domain.Models.Players
 
         public void SendGift(ResourceType resourceType, int resourceValue)
         {
-            if (Enum.IsDefined(typeof(ResourceType), resourceType) || resourceType == ResourceType.None)
+            if (!Enum.IsDefined(typeof(ResourceType), resourceType) || resourceType == ResourceType.None)
             {
-                throw new DomainException("");
+                throw new DomainException("ResourceType not defined");
             }
 
             if (resourceValue < 0)
             {
-                throw new DomainException("");
+                throw new DomainException("ResourceValue should be positive integer");
             }
 
             var resource = Resources.FirstOrDefault(i => i.Type == resourceType);
@@ -53,26 +61,26 @@ namespace SuperPlay.Game.Domain.Models.Players
                 var newBalance = resource.Balance - resourceValue;
                 if (newBalance < 0)
                 {
-                    throw new DomainException("");
+                    throw new DomainException("Balance cannot be negative");
                 }
                 resource.SetBalance(newBalance);
             }
             else
             {
-                throw new DomainException("");
+                throw new DomainException("Resource not found");
             }
         }
 
         public Resource UpdateResources(ResourceType resourceType, int resourceValue)
         {
-            if (Enum.IsDefined(typeof(ResourceType), resourceType) || resourceType == ResourceType.None)
+            if (!Enum.IsDefined(typeof(ResourceType), resourceType) || resourceType == ResourceType.None)
             {
-                throw new DomainException("");
+                throw new DomainException("ResourceType not defined");
             }
 
             if (resourceValue < 0)
             {
-                throw new DomainException("");
+                throw new DomainException("ResourceValue should be positive integer");
             }
 
             var resource = Resources.FirstOrDefault(i => i.Type == resourceType);

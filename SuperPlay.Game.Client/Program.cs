@@ -41,18 +41,15 @@ try
     while (true)
     {
         Console.Write(@"
-    Here are some GUID-s to use for Id-s:
+    Guids of Seeded players:
+    1) id: 9e7cebc7-6961-4725-b5da-c2ae16319be8  deviceid: 89af07a5-75ca-4aa0-be9b-6b0a8686c2e5
+    2) id: 35d6e601-1a24-47ab-ac6d-9a92928e4ef3  deviceid: 805987ab-5785-4609-9eca-43fb1305cd4f
+    3) id: 62b8fe24-e0bf-4083-8566-b6886ee600a7  deviceid: 8b403820-f525-4bd1-bb92-544e62a63856
 
-9e7cebc7-6961-4725-b5da-c2ae16319be8
-89af07a5-75ca-4aa0-be9b-6b0a8686c2e5
-35d6e601-1a24-47ab-ac6d-9a92928e4ef3
-805987ab-5785-4609-9eca-43fb1305cd4f
-62b8fe24-e0bf-4083-8566-b6886ee600a7
-
-Type command: 
-    - login
-    - update-resource (type) (value)
-    - send-gift (playerId) (type) (value) ");
+    Here are the list of commands available:
+    1) login
+    2) update-resource (type) (value)
+    3) send-gift (playerId) (type) (value) ");
 
         Console.WriteLine();
         var input = Console.ReadLine();

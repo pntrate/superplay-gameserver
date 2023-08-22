@@ -114,7 +114,7 @@ namespace SuperPlay.Game.Api.Extensions
             {
                 logger.LogError(ex, message);
             }
-            return new ErrorMessage(message);
+            return new ErrorMessage(message, ex);
         }
 
     }
