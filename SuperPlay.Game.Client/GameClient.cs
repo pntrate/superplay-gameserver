@@ -11,7 +11,7 @@ using System.Text.Json;
 
 namespace SuperPlay.Game.Client
 {
-    public class Client
+    public class GameClient
     {
         private readonly string _serverUrl;
         private ClientWebSocket _clientWebSocket;
@@ -25,14 +25,14 @@ namespace SuperPlay.Game.Client
         public event Action<GiftEvent>? OnGiftEvent;
         public event Action<ErrorMessage>? OnError;
 
-        public Client(string serverUrl, ILogger logger)
+        public GameClient(string serverUrl, ILogger logger)
         {
             _serverUrl = serverUrl;
             _logger = logger;
             _clientWebSocket = new ClientWebSocket();
         }
 
-        public async Task Connect(Guid deviceId)
+        public async Task Connect()
         {
             await _clientWebSocket.ConnectAsync(new Uri(_serverUrl), CancellationToken.None);
             _listenTask = Task.Factory.StartNew(ListenForMessages);
